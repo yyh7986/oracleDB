@@ -35,3 +35,7 @@ create sequence book_seq start with 15 increment by 1;
 -- 1부터 1씩 늘어나는 member_seq rent_seq를 생성해주세요
 create sequence member_seq start with 1 increment by 1;
 create sequence rent_seq start with 1 increment by 1;
+
+
+
+
