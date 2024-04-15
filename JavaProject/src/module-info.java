@@ -4,5 +4,5 @@
 /**
  * 
  */
-module OracleDB {
+module JavaProject {
 }
