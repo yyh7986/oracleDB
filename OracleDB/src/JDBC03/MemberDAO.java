@@ -86,7 +86,7 @@ public class MemberDAO {
 		}
 		
 		dbm.close(con, pstmt, rs);
-		return null;
+		return mdto;
 	}
 
 	public int updateMember(MemberDTO mdto) {
@@ -103,6 +103,22 @@ public class MemberDAO {
 			pstmt.setInt(5, mdto.getBpoint());
 			pstmt.setString(6, mdto.getGender());
 			pstmt.setInt(7, mdto.getMembernum());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		dbm.close(con, pstmt, rs);
+		return result;
+	}
+
+	public int deleteMember(int memberNum) {
+		int result = 0;
+		con = dbm.getConnection();
+		String sql = "DELETE FROM memberlist WHERE membernum=?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, memberNum);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
