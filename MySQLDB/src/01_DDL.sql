@@ -123,9 +123,15 @@ ADD CONSTRAINT `FK2`
   
   
   CREATE OR REPLACE VIEW rentDetail AS
-  SELECT r.numseq, r.rentdate, r.bnum, b.subject, r.mnum, m.name, b.rentprice, r.discount,
-  		(b.rentprice - r.discount) AS "매출액"
+  SELECT r.numseq, date_format(r.rentdate, '%Y-%m-%d') AS rentdate, 
+  			 r.bnum, b.subject, r.mnum, m.name, b.rentprice, r.discount,
+  			 (b.rentprice - r.discount) AS "amount"
   FROM rentlist r, booklist b, memberlist m
   WHERE r.bnum = b.booknum AND r.mnum = m.membernum;
   
   SELECT * FROM rentDetail;
+  
+  
+  
+ 
+  
