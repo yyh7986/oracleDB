@@ -10,10 +10,10 @@ public class RentList_Insert {
 		
 		System.out.println("===== 대여목록 추가 =====");
 		
-		String membernum;
+		int membernum;
 		while(true) {
 			System.out.print("대여할 회원의 회원번호를 입력하세요 : ");
-			membernum = sc.nextLine();
+			membernum = Integer.parseInt(sc.nextLine());
 			int result = rdao.memberOk(membernum);	// 입력한 멤버번호가 존재하면 1, 없으면 0을 리턴
 			if(result == 0) {
 				System.out.println("존재하지 않는 회원번호입니다. 다시 입력하세요");
@@ -24,10 +24,10 @@ public class RentList_Insert {
 		}
 		System.out.println("입력된 회원 번호 : " + membernum + "\n");
 		
-		String booknum;
+		int booknum;
 		while(true) {
 			System.out.print("대여할 도서의 도서번호를 입력하세요 : ");
-			booknum = sc.nextLine();
+			booknum = Integer.parseInt(sc.nextLine());
 			int result = rdao.bookOk(booknum);	// 입력한 도서번호가 존재하면 1, 없으면 0을 리턴
 			if(result == 0) {
 				System.out.println("존재하지 않는 도서번호입니다. 다시 입력하세요");
@@ -42,8 +42,8 @@ public class RentList_Insert {
 		int discount = Integer.parseInt(sc.nextLine());
 		
 		RentDto rdto = new RentDto();
-		rdto.setMnum(Integer.parseInt(membernum));
-		rdto.setBnum(Integer.parseInt(booknum));
+		rdto.setMnum(membernum);
+		rdto.setBnum(booknum);
 		rdto.setDiscount(discount);
 		
 		int result = rdao.insertRent(rdto);
